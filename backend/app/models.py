@@ -11,11 +11,11 @@ class WebUser(SQLModel, table = True):
 
 class Host(SQLModel, table = True):
     __tablename__ = "host"
-    id: Optional[int] = Field(default=None, primary_key=True, foreign_key = "web_user.id", on_delete = "CASCADE")
+    id: Optional[int] = Field(default=None, primary_key=True, foreign_key = "web_user.id", ondelete="CASCADE")
     
 class Attendee(SQLModel, table = True):
     __tablename__ = "attendee"
-    id: Optional[int] = Field(default = None, primary_key = True, foreign_key = "web_user.id", on_delete = "CASCADE")
+    id: Optional[int] = Field(default = None, primary_key = True, foreign_key = "web_user.id", ondelete="CASCADE")
 
 class Calendar(SQLModel, table = True):
     __tablename__ = "calendar"
@@ -25,11 +25,11 @@ class Calendar(SQLModel, table = True):
 
 class Create_Schedule(SQLModel, table = True):
     __tablename__ = "create_schedule"
-    hostID: int = Field(primary_key = True, foreign_key = "host.id", on_delete = "CASCADE")
-    calendarID: int = Field(primary_key = True, foreign_key = "calendar.id", on_delete = "CASCADE")
+    hostID: int = Field(primary_key = True, foreign_key = "host.id", ondelete="CASCADE")
+    calendarID: int = Field(primary_key = True, foreign_key = "calendar.id", ondelete="CASCADE")
     time_create: datetime = Field(default_factory = datetime.now)
 
 class Vote(SQLModel, table = True):
     __tablename__ = "vote"
-    attendeeID: int = Field(primary_key = True, foreign_key = "attendee.id", on_delete = "CASCADE")
-    calendarID: int = Field(primary_key = True, foreign_key = "calendar.id", on_delete = "CASCADE")
+    attendeeID: int = Field(primary_key = True, foreign_key = "attendee.id", ondelete="CASCADE")
+    calendarID: int = Field(primary_key = True, foreign_key = "calendar.id", ondelete="CASCADE")

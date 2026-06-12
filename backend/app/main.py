@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Depends
 from sqlmodel import Session
-from app.database import get_db
+from app.database import get_db, engine
+from app.models import SQLModel
 
 # Khởi tạo backend
 app = FastAPI(title="when2meet_enhance")
@@ -13,3 +14,5 @@ def read_root():
 @app.get("/test-db")
 def test_db(db: Session = Depends(get_db)):
     return {"status:" "Kết nối PostgreSQL bằng SQLModel thành công!"}
+
+SQLModel.metadata.create_all(engine)
